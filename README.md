@@ -16,8 +16,9 @@ El proceso de entrenamiento de un modelo busca encontrar el mejor modelo y ajust
 
 ## Instrucciones para despliegue
 
-docker build -t PenguinModelAPI -f docker/Dockerfile .
-docker run --rm -d -p 8989:8989 --name modelAPI PenguinModelAPI:latest
+- docker build -t PenguinModelAPI -f docker/Dockerfile .
+- docker run --rm -d -p 8989:8989 --name modelAPI PenguinModelAPI:latest
 
 La API se levantara en localhost:8989
+
 Documentación de la API en localhost:8989/docs
