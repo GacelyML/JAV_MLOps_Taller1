@@ -21,6 +21,10 @@ El proceso de entrenamiento de un modelo busca encontrar el mejor modelo y ajust
     ```shell
     git clone https://github.com/GacelyML/JAV_MLOps_Taller1
     ```
+- Ubíquese en la carpeta recién creada:
+    ```shell
+    cd JAV_MLOps_Taller1
+    ```
 - Cree el contenedor con el siguiente comando:
     ```shell
     docker build -t PenguinModelAPI -f docker/Dockerfile .
