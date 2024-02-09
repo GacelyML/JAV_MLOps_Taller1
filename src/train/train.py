@@ -9,22 +9,46 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import LabelEncoder, OrdinalEncoder, StandardScaler
 
 # load data
-filename = "penguins_size.csv"
-data = read_csv(filename)
+filename = "penguins_lter.csv"
+original_names = [
+    "Species",
+    "Culmen Length (mm)",
+    "Culmen Depth (mm)",
+    "Flipper Length (mm)",
+    "Body Mass (g)",
+    "Sex",
+    "Delta 15 N (o/oo)",
+    "Delta 13 C (o/oo)",
+]
+new_names = [
+    "specie",
+    "culmenLen",
+    "culmenDepth",
+    "flipperLen",
+    "bodyMass",
+    "sex",
+    "delta15N",
+    "delta13C",
+]
+
+data = read_csv(filename, usecols=original_names)
+data.columns = new_names
 
 # clean data
 data.replace({"sex": {".": None}}, inplace=True)
 data.dropna(inplace=True)
 
 # transform data
-target_variable = "species"
+target_variable = "specie"
 numerical_features = [
-    "culmen_length_mm",
-    "culmen_depth_mm",
-    "flipper_length_mm",
-    "body_mass_g",
+    "culmenLen",
+    "culmenDepth",
+    "flipperLen",
+    "bodyMass",
+    "delta15N",
+    "delta13C",
 ]
-categorical_features = ["island", "sex"]
+categorical_features = ["sex"]
 
 label_encoder = LabelEncoder().fit(data[target_variable])
 y = label_encoder.transform(data[target_variable])
@@ -37,7 +61,9 @@ values_encoder = OrdinalEncoder().fit(X[categorical_features])
 X[categorical_features] = values_encoder.transform(X[categorical_features])
 
 # split data
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1337)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=1337
+)
 
 # build models
 lr_model = LogisticRegression()
