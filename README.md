@@ -16,12 +16,46 @@ El proceso de entrenamiento de un modelo busca encontrar el mejor modelo y ajust
 
 ## Instrucciones para despliegue
 
-- instalar docker descargando este link docker https://get.docker.com/ como sh y ejecutarlo
-- clonar repositorio
-- ejecutar estos comandos
-- docker build -t PenguinModelAPI -f docker/Dockerfile .
-- docker run --rm -d -p 8989:8989 --name modelAPI PenguinModelAPI:latest
+- Instale docker siguiendo las instrucciones en la [documentación oficial](https://docs.docker.com/get-docker/).
+- Clone este repositorio con el siguiente comando:
+    ```shell
+    git clone https://github.com/GacelyML/JAV_MLOps_Taller1
+    ```
+- Cree el contenedor con el siguiente comando:
+    ```shell
+    docker build -t PenguinModelAPI -f docker/Dockerfile .
+    ```
+- Ejecute el contenedor con el siguiente comando:
+    ```shell
+    docker run --rm -d -p 8989:8989 --name modelAPI PenguinModelAPI:latest
+    ```
 
-La API se levantara en localhost:8989
+La API se levantará en `localhost:8989`, y
+puede acceder a la documentación de la misma en `localhost:8989/docs`.
 
-Documentación de la API en localhost:8989/docs
+## Uso
+
+Puede probar la API con el siguiente input de ejemplo:
+
+```json
+{
+    "culmenLen": [39.1, 39.5],
+    "culmenDepth": [18.7, 17.4],
+    "flipperLen": [181, 186],
+    "bodyMass": [3750, 3800],
+    "sex": ["MALE", "FEMALE"],
+    "delta15N": [8.94, 8.37],
+    "delta13C": [-24.69, -25.33],
+}
+```
+
+Lo cual retornará la siguiente salida:
+
+```json
+{
+    "specie": [
+        "Adelie Penguin (Pygoscelis adeliae)",
+        "Adelie Penguin (Pygoscelis adeliae)",
+    ]
+}
+```
