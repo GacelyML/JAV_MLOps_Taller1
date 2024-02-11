@@ -1,8 +1,9 @@
-# JAV_MLOps_Taller1
+# Taller1: MLOps
+
+## Por Brayan Carvajal, Juan Pablo Nieto y Nicolas Rojas
 
 ## Objetivos del taller
 Descargue los datos asociados en el aula virtual.
-
 
 - Cree un archivo en Python consuma estos datos y realice las dos etapas, procesamiento de datos y creación de modelo. Considere usar como guía las sub-etapas listadas. 
 - Cree un API usando FastAPI permita hacer inferencia al modelo entrenado.
