@@ -27,11 +27,11 @@ El proceso de entrenamiento de un modelo busca encontrar el mejor modelo y ajust
     ```
 - Cree el contenedor con el siguiente comando:
     ```shell
-    docker build -t PenguinModelAPI -f docker/Dockerfile .
+    docker build -t penguinmodelapi -f docker/Dockerfile .
     ```
 - Ejecute el contenedor con el siguiente comando:
     ```shell
-    docker run --rm -d -p 8989:8989 --name modelAPI PenguinModelAPI:latest
+    docker run --rm -d -p 8989:8989 --name modelapi penguinmodelapi:latest
     ```
 
 La API se levantará en `localhost:8989`, y
