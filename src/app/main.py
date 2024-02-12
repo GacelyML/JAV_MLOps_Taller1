@@ -16,13 +16,13 @@ app = FastAPI()
 
 class model_input(BaseModel):
     model : str
-    culmenLen : float
-    culmenDepth : float
-    flipperLen : float
-    bodyMass : int
-    sex : str
-    delta15N : float
-    delta13C : float
+    culmenLen : List[float]
+    culmenDepth : List[float]
+    flipperLen : List[float]
+    bodyMass : List[int]
+    sex : List[str]
+    delta15N : List[float]
+    delta13C : List[float]
 
 @app.post("/predict/")
 def predict(item:model_input):
