@@ -36,7 +36,9 @@ El proceso de entrenamiento de un modelo busca encontrar el mejor modelo y ajust
     ```
 
 La API se levantará en `localhost:8989`, y
-puede acceder a la documentación de la misma en `localhost:8989/docs`.
+puede acceder a la documentación de la misma en `localhost:8989/docs`. 
+
+El metodo POST tiene como nombre `predict`, para realizar peticiones en plataformas como POSTMAN usar el URL `http://localhost:8989/predict`. 
 
 ## Uso
 
