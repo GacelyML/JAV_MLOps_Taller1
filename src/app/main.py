@@ -30,7 +30,7 @@ def predict(item:model_input):
     global label_encoder, encoder, knn_model, lr_model, lda_model, scaler
 
     # Predice con respecto al modelo que se le especifique. 
-    X = pd.DataFrame([item.model_dump().values()], columns=item.model_dump().keys())
+    X = pd.DataFrame([item.dict().values()], columns=item.dict().keys())
 
     numerical_features = [
     "culmenLen",
