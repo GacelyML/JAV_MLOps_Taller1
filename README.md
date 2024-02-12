@@ -44,14 +44,14 @@ Puede probar la API con el siguiente input de ejemplo:
 
 ```json
 {
-    "model": ["knn", "lr"],
+    "model": "knn",
     "culmenLen": [39.1, 39.5],
     "culmenDepth": [18.7, 17.4],
     "flipperLen": [181, 186],
     "bodyMass": [3750, 3800],
     "sex": ["MALE", "FEMALE"],
     "delta15N": [8.94, 8.37],
-    "delta13C": [-24.69, -25.33],
+    "delta13C": [-24.69, -25.33]
 }
 ```
 
@@ -61,7 +61,10 @@ Lo cual retornará la siguiente salida:
 {
     "specie": [
         "Adelie Penguin (Pygoscelis adeliae)",
-        "Adelie Penguin (Pygoscelis adeliae)",
+        "Adelie Penguin (Pygoscelis adeliae)"
     ]
 }
 ```
+
+Para cambiar el modelo seleccionado, modificar el argumento `model` entre las siguientes opciones: `knn`, `lda`, `lr`. 
+
