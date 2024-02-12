@@ -45,16 +45,18 @@ def predict(item:model_input):
     X[numerical_features] = scaler.transform(X[numerical_features])
     X[categorical_features] = encoder.transform(X[categorical_features])
 
+    X_train = X.drop(columns=['model'])
+
     if item.model == "knn":
-        output = knn_model.predict(X)
+        output = knn_model.predict(X_train)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
     elif item.model == "lda":
-        output = lda_model.predict(X)
+        output = lda_model.predict(X_train)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
     elif item.model == "lr":
-        output = lr_model.predict(X)
+        output = lr_model.predict(X_train)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
     else:
