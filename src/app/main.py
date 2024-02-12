@@ -50,15 +50,15 @@ def predict(item:model_input):
     X[categorical_features] = encoder.transform(X[categorical_features])
 
     if model_info == "knn":
-        output = knn_model.predict(X_train)
+        output = knn_model.predict(X)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
     elif model_info == "lda":
-        output = lda_model.predict(X_train)
+        output = lda_model.predict(X)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
     elif model_info == "lr":
-        output = lr_model.predict(X_train)
+        output = lr_model.predict(X)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
     else:
