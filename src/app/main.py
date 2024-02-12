@@ -5,7 +5,7 @@ import json
 import pandas as pd
 
 # Carga los elementos entrenados
-label_encoder = joblib.load('models/label_encoder.pkl')
+label_encoder = joblib.load('../models/label_encoder.pkl')
 encoder = joblib.load('models/variable_encoder.pkl')
 knn_model = joblib.load('models/knn_model.pkl')
 lr_model = joblib.load('models/lr_model.pkl')
