@@ -44,7 +44,7 @@ Puede probar la API con el siguiente input de ejemplo:
 
 ```json
 {
-    "model": ["knn", "lr"]
+    "model": ["knn", "lr"],
     "culmenLen": [39.1, 39.5],
     "culmenDepth": [18.7, 17.4],
     "flipperLen": [181, 186],
