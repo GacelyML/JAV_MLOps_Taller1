@@ -16,7 +16,7 @@ scaler = joblib.load('../models/standard_scaler.pkl')
 app = FastAPI()
 
 class model_input(BaseModel):
-    model : str
+    model : Optional[str] = None
     culmenLen : List[float]
     culmenDepth : List[float]
     flipperLen : List[float]
@@ -30,8 +30,11 @@ def predict(item:model_input):
 
     global label_encoder, encoder, knn_model, lr_model, lda_model, scaler
 
+    data_dict = item.dict()
+    model_info = data_dict.pop('model', None)
+    
     # Predice con respecto al modelo que se le especifique. 
-    X = pd.DataFrame([item.dict().values()], columns=item.dict().keys())
+    X = pd.DataFrame({key: value for key, value in data_dict.items()})
 
     numerical_features = [
     "culmenLen",
@@ -46,17 +49,15 @@ def predict(item:model_input):
     X[numerical_features] = scaler.transform(X[numerical_features])
     X[categorical_features] = encoder.transform(X[categorical_features])
 
-    X_train = X.drop(columns=['model'])
-
-    if item.model == "knn":
+    if model_info == "knn":
         output = knn_model.predict(X_train)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
-    elif item.model == "lda":
+    elif model_info == "lda":
         output = lda_model.predict(X_train)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
-    elif item.model == "lr":
+    elif model_info == "lr":
         output = lr_model.predict(X_train)
         output_cod = label_encoder.inverse_transform(output).tolist()
         return {"prediction" : output_cod}
